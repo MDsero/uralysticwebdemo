@@ -29,13 +29,13 @@ const ContactSection = () => {
           transition={{ duration: 0.8 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-sky-500 text-white text-sm font-semibold mb-6">
+          <span className="inline-block px-4 py-2 rounded-full bg-sky-500 text-white text-sm font-semibold mb-6 tracking-wide">
             GET IN TOUCH
           </span>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-4xl md:text-6xl font-display font-bold mb-6 tracking-tight">
             Let's <span className="text-gradient">Build Together</span>
           </h2>
-          <p className="text-xl text-muted-foreground mb-16 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground mb-16 max-w-2xl mx-auto font-body">
             Ready to transform your business? Let's start a conversation about your next project.
           </p>
         </motion.div>
@@ -53,8 +53,8 @@ const ContactSection = () => {
               <div className="w-16 h-16 mx-auto rounded-2xl sky-gradient flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
                 <Mail className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Email Us</h3>
-              <p className="text-sky-600 font-medium">auraorganising@gmail.com</p>
+              <h3 className="text-lg font-display font-semibold mb-2">Email Us</h3>
+              <p className="text-sky-600 font-medium font-body">auraorganising@gmail.com</p>
             </div>
           </motion.a>
 
@@ -70,8 +70,8 @@ const ContactSection = () => {
               <div className="w-16 h-16 mx-auto rounded-2xl sky-gradient flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
                 <Phone className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Call Us</h3>
-              <p className="text-sky-600 font-medium">+960 9467845</p>
+              <h3 className="text-lg font-display font-semibold mb-2">Call Us</h3>
+              <p className="text-sky-600 font-medium font-body">+960 9467845</p>
             </div>
           </motion.a>
 
@@ -86,8 +86,8 @@ const ContactSection = () => {
               <div className="w-16 h-16 mx-auto rounded-2xl sky-gradient flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
                 <Globe className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Visit Website</h3>
-              <p className="text-sky-600 font-medium">Coming Soon</p>
+              <h3 className="text-lg font-display font-semibold mb-2">Visit Website</h3>
+              <p className="text-sky-600 font-medium font-body">Coming Soon</p>
             </div>
           </motion.div>
         </div>
@@ -101,7 +101,7 @@ const ContactSection = () => {
         >
           <Button 
             size="lg" 
-            className="sky-gradient text-white px-12 py-7 text-xl rounded-full glow-effect hover:scale-105 transition-transform shadow-xl"
+            className="sky-gradient text-white px-12 py-7 text-xl rounded-full glow-effect hover:scale-105 transition-transform shadow-xl font-semibold tracking-wide"
           >
             Start Your Project
             <ArrowRight className="ml-3 w-6 h-6" />
