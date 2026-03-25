@@ -7,71 +7,85 @@ const problems = [
     icon: DollarSign,
     title: "High Costs",
     description: "Traditional agencies charge premium prices that small to mid-sized businesses can't afford.",
-    color: "from-rose-400 to-rose-600",
+    accent: "from-rose-400 to-rose-500",
+    iconBg: "bg-rose-50",
+    iconColor: "text-rose-500",
+    number: "01",
   },
   {
     icon: Puzzle,
     title: "Fragmented Services",
     description: "Clients have to hire one person for design, another for coding, and another for security.",
-    color: "from-amber-400 to-amber-600",
+    accent: "from-amber-400 to-orange-500",
+    iconBg: "bg-amber-50",
+    iconColor: "text-amber-500",
+    number: "02",
   },
   {
     icon: Zap,
     title: "Complexity",
     description: "Technology is moving fast, and businesses are being left behind due to technical barriers.",
-    color: "from-violet-400 to-violet-600",
+    accent: "from-violet-400 to-purple-500",
+    iconBg: "bg-violet-50",
+    iconColor: "text-violet-500",
+    number: "03",
   },
 ];
 
 const ProblemSection = () => {
   return (
-    <section className="py-32 relative overflow-hidden bg-white">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-full opacity-30">
-        <div className="absolute top-20 right-20 w-64 h-64 bg-sky-100 rounded-full blur-3xl" />
+    <section className="py-28 md:py-36 relative overflow-hidden section-gradient-alt noise-overlay">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <FloatingShape variant="ring" className="absolute top-16 right-[8%] w-20 h-20 opacity-25" delay={0} />
+        <FloatingShape variant="cube" className="absolute bottom-20 left-[5%] w-16 h-16 opacity-20" delay={1.5} />
       </div>
-      
-      <FloatingShape 
-        variant="ring" 
-        className="absolute top-20 right-10 w-20 h-20 opacity-30" 
-        delay={0}
-      />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <span className="inline-block px-4 py-2 rounded-full bg-sky-100 text-sky-600 text-sm font-semibold mb-6">
-            THE CHALLENGE
-          </span>
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block px-5 py-2 rounded-full bg-accent text-primary text-xs font-display font-semibold mb-6 tracking-[0.2em] uppercase"
+          >
+            The Challenge
+          </motion.span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             The <span className="text-gradient">Problem</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-body">
             Businesses face overwhelming obstacles when trying to establish their digital presence
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {problems.map((problem, index) => (
             <motion.div
               key={problem.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.7, delay: index * 0.15 }}
               className="group"
             >
-              <div className="glass-card rounded-3xl p-8 h-full hover:shadow-xl transition-all duration-500 hover:-translate-y-2 card-3d">
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${problem.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                  <problem.icon className="w-8 h-8 text-white" />
+              <div className="glass-card-elevated rounded-3xl p-8 h-full hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 relative overflow-hidden">
+                {/* Gradient line at top */}
+                <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${problem.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                
+                {/* Number watermark */}
+                <span className="absolute top-4 right-6 text-6xl font-display font-bold text-muted/60 select-none">{problem.number}</span>
+                
+                <div className={`w-14 h-14 rounded-2xl ${problem.iconBg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                  <problem.icon className={`w-7 h-7 ${problem.iconColor}`} />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">{problem.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{problem.description}</p>
+                <h3 className="text-xl font-display font-bold mb-3">{problem.title}</h3>
+                <p className="text-muted-foreground leading-relaxed font-body">{problem.description}</p>
               </div>
             </motion.div>
           ))}

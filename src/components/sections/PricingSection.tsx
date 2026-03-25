@@ -13,31 +13,25 @@ const features = [
 
 const PricingSection = () => {
   return (
-    <section className="py-32 relative overflow-hidden bg-white">
-      <FloatingShape 
-        variant="sphere" 
-        className="absolute top-20 left-10 w-28 h-28 opacity-30" 
-        delay={0.5}
-      />
-      <FloatingShape 
-        variant="cube" 
-        className="absolute bottom-32 right-20 w-20 h-20 opacity-25" 
-        delay={1}
-      />
+    <section className="py-28 md:py-36 relative overflow-hidden section-gradient-alt noise-overlay">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <FloatingShape variant="sphere" className="absolute top-16 left-[6%] w-24 h-24 opacity-25" delay={0.5} />
+        <FloatingShape variant="hexagon" className="absolute bottom-24 right-[10%] w-18 h-18 opacity-20" delay={1} />
+      </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center max-w-7xl mx-auto">
-          {/* Left side - Content */}
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center max-w-7xl mx-auto">
+          {/* Left side */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.9 }}
           >
-            <span className="inline-block px-4 py-2 rounded-full bg-sky-100 text-sky-600 text-sm font-semibold mb-6">
-              INVESTMENT
+            <span className="inline-block px-5 py-2 rounded-full bg-accent text-primary text-xs font-display font-semibold mb-6 tracking-[0.2em] uppercase">
+              Investment
             </span>
-            <h2 className="text-4xl md:text-6xl font-bold mb-8">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">
               Business Model <br />
               <span className="text-gradient">& Pricing</span>
             </h2>
@@ -46,80 +40,79 @@ const PricingSection = () => {
               {features.map((feature, index) => (
                 <motion.div
                   key={feature}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -25 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-start gap-4"
+                  className="flex items-start gap-4 group"
                 >
-                  <div className="w-6 h-6 rounded-full sky-gradient flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-4 h-4 text-white" />
+                  <div className="w-6 h-6 rounded-full sky-gradient flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm">
+                    <Check className="w-3.5 h-3.5 text-white" />
                   </div>
-                  <p className="text-lg text-foreground">{feature}</p>
+                  <p className="text-foreground font-body leading-relaxed">{feature}</p>
                 </motion.div>
               ))}
             </div>
 
             <Button 
               size="lg" 
-              className="sky-gradient text-white px-8 py-6 text-lg rounded-full glow-effect hover:scale-105 transition-transform"
+              className="sky-gradient text-white px-9 py-6 text-base rounded-full glow-effect hover:scale-105 active:scale-[0.98] transition-all duration-300 font-display font-semibold tracking-wide shadow-lg"
             >
               Request a Quote
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </motion.div>
 
-          {/* Right side - Visual card */}
+          {/* Right side – Card */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.9, delay: 0.2 }}
           >
             <div className="relative">
-              {/* Main pricing card */}
-              <div className="glass-card rounded-3xl p-10 relative overflow-hidden glow-effect">
-                <div className="absolute top-0 right-0 w-40 h-40 bg-sky-400/10 rounded-full blur-2xl" />
+              <div className="glass-card-elevated rounded-3xl p-10 relative overflow-hidden glow-subtle">
+                <div className="absolute top-0 right-0 w-48 h-48 bg-primary/5 rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
                 
                 <div className="relative z-10">
-                  <span className="inline-block px-3 py-1 rounded-full bg-sky-500 text-white text-sm font-semibold mb-6">
-                    MOST POPULAR
+                  <span className="inline-block px-4 py-1.5 rounded-full sky-gradient text-white text-xs font-display font-semibold mb-6 tracking-wider uppercase">
+                    Most Popular
                   </span>
                   
-                  <h3 className="text-3xl font-bold mb-2">Custom Package</h3>
-                  <p className="text-muted-foreground mb-8">Tailored to your exact requirements</p>
+                  <h3 className="text-2xl font-display font-bold mb-2">Custom Package</h3>
+                  <p className="text-muted-foreground mb-8 font-body">Tailored to your exact requirements</p>
                   
-                  <div className="flex items-baseline gap-2 mb-8">
-                    <span className="text-5xl font-bold text-gradient">Flexible</span>
-                    <span className="text-muted-foreground">pricing</span>
+                  <div className="flex items-baseline gap-3 mb-8">
+                    <span className="text-5xl font-display font-bold text-gradient">Flexible</span>
+                    <span className="text-muted-foreground font-body">pricing</span>
                   </div>
                   
                   <div className="space-y-4 mb-8">
                     {["Project-based or retainer", "Full-service delivery", "Dedicated support", "Scalable solutions"].map((item) => (
                       <div key={item} className="flex items-center gap-3">
-                        <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center">
-                          <Check className="w-3 h-3 text-green-600" />
+                        <div className="w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3 h-3 text-emerald-600" />
                         </div>
-                        <span>{item}</span>
+                        <span className="font-body text-foreground">{item}</span>
                       </div>
                     ))}
                   </div>
                   
-                  <Button className="w-full py-6 text-lg rounded-full sky-gradient text-white hover:scale-[1.02] transition-transform">
+                  <Button className="w-full py-6 text-base rounded-full sky-gradient text-white hover:scale-[1.02] active:scale-[0.99] transition-all duration-300 font-display font-semibold shadow-lg">
                     Get Started Today
                   </Button>
                 </div>
               </div>
               
-              {/* Floating badge */}
               <motion.div
-                animate={{ y: [-8, 8, -8] }}
-                transition={{ duration: 4, repeat: Infinity }}
-                className="absolute -top-4 -right-4 glass-card rounded-2xl p-4 shadow-xl"
+                animate={{ y: [-6, 6, -6] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-3 -right-3 glass-card-elevated rounded-2xl p-4 shadow-xl"
               >
                 <div className="text-center">
-                  <span className="text-2xl font-bold text-gradient">100%</span>
-                  <p className="text-xs text-muted-foreground">Transparent</p>
+                  <span className="text-xl font-display font-bold text-gradient">100%</span>
+                  <p className="text-[10px] text-muted-foreground font-display tracking-wider uppercase">Transparent</p>
                 </div>
               </motion.div>
             </div>
