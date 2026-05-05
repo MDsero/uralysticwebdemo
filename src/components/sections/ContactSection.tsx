@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Globe, ArrowRight, Send } from "lucide-react";
+import { Mail, Phone, Globe, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import FloatingShape from "@/components/3d/FloatingShape";
+import { useState } from "react";
+import ShowcaseCarousel from "./ShowcaseCarousel";
 
 const contactCards = [
   {
@@ -10,18 +12,21 @@ const contactCards = [
     title: "Email Us",
     value: "auraorganising@gmail.com",
     href: "mailto:auraorganising@gmail.com",
+    action: "link" as const,
   },
   {
     icon: Phone,
     title: "Call Us",
     value: "+91 90807 73449",
     href: "tel:+919080773449",
+    action: "link" as const,
   },
   {
     icon: Globe,
-    title: "Visit Website",
-    value: "Coming Soon",
+    title: "View Showcase",
+    value: "10 Trending Designs",
     href: "#",
+    action: "showcase" as const,
   },
 ];
 
