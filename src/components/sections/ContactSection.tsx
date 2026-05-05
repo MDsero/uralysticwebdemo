@@ -14,8 +14,8 @@ const contactCards = [
   {
     icon: Phone,
     title: "Call Us",
-    value: "+960 9467845",
-    href: "tel:+9609467845",
+    value: "+91 90807 73449",
+    href: "tel:+919080773449",
   },
   {
     icon: Globe,
