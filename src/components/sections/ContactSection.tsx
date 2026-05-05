@@ -129,6 +129,8 @@ const ContactSection = () => {
           </div>
         </motion.div>
       </div>
+
+      <ShowcaseCarousel open={showcaseOpen} onOpenChange={setShowcaseOpen} />
     </section>
   );
 };
