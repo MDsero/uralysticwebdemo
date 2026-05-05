@@ -31,6 +31,7 @@ const contactCards = [
 ];
 
 const ContactSection = () => {
+  const [showcaseOpen, setShowcaseOpen] = useState(false);
   return (
     <section className="py-28 md:py-36 relative overflow-hidden section-gradient noise-overlay">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
