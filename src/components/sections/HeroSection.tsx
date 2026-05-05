@@ -1,44 +1,63 @@
-import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
 import { ArrowRight, Sparkles, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FloatingShape from "@/components/3d/FloatingShape";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import hero3DScene from "@/assets/hero-3d-scene.jpg";
 
 const HeroSection = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const update = () => setIsMobile(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
+
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
   // Scroll parallax — different speeds per layer create depth
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, 200]);
-  const midY = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const fgY = useTransform(scrollYProgress, [0, 1], [0, 60]);
-  const contentY = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const midY = useTransform(scrollYProgress, [0, 1], [0, 90]);
+  const fgY = useTransform(scrollYProgress, [0, 1], [0, 45]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -30]);
   const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
-  const bgScale = useTransform(scrollYProgress, [0, 1], [1.05, 1.15]);
 
-  // Mouse parallax
+  // Mouse parallax (disabled on mobile / reduced motion)
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 50, damping: 20 });
-  const sy = useSpring(my, { stiffness: 50, damping: 20 });
-  const layer1X = useTransform(sx, [-1, 1], [-25, 25]);
-  const layer1Y = useTransform(sy, [-1, 1], [-15, 15]);
-  const layer2X = useTransform(sx, [-1, 1], [-15, 15]);
-  const layer2Y = useTransform(sy, [-1, 1], [-10, 10]);
-  const layer3X = useTransform(sx, [-1, 1], [-8, 8]);
-  const layer3Y = useTransform(sy, [-1, 1], [-5, 5]);
+  const sx = useSpring(mx, { stiffness: 40, damping: 20 });
+  const sy = useSpring(my, { stiffness: 40, damping: 20 });
+  const layer1X = useTransform(sx, [-1, 1], [-18, 18]);
+  const layer1Y = useTransform(sy, [-1, 1], [-10, 10]);
+  const layer2X = useTransform(sx, [-1, 1], [-10, 10]);
+  const layer2Y = useTransform(sy, [-1, 1], [-6, 6]);
 
   useEffect(() => {
+    if (prefersReducedMotion || isMobile) return;
+    let raf = 0;
+    let nx = 0, ny = 0;
     const handler = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 2 - 1;
-      const y = (e.clientY / window.innerHeight) * 2 - 1;
-      mx.set(x);
-      my.set(y);
+      nx = (e.clientX / window.innerWidth) * 2 - 1;
+      ny = (e.clientY / window.innerHeight) * 2 - 1;
+      if (!raf) {
+        raf = requestAnimationFrame(() => {
+          mx.set(nx);
+          my.set(ny);
+          raf = 0;
+        });
+      }
     };
-    window.addEventListener("mousemove", handler);
-    return () => window.removeEventListener("mousemove", handler);
-  }, [mx, my]);
+    window.addEventListener("mousemove", handler, { passive: true });
+    return () => {
+      window.removeEventListener("mousemove", handler);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [mx, my, prefersReducedMotion, isMobile]);
 
   return (
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617]">
