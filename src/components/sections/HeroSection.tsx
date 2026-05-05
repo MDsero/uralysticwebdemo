@@ -63,14 +63,16 @@ const HeroSection = () => {
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617]">
       {/* LAYER 0 — Deep 3D scene background */}
       <motion.div
-        style={{ y: bgY, scale: bgScale }}
+        style={{ y: bgY }}
         className="absolute inset-0 -z-10"
       >
         <img
           src={hero3DScene}
           alt=""
           aria-hidden="true"
-          className="w-full h-full object-cover"
+          fetchPriority="high"
+          decoding="async"
+          className="w-full h-full object-cover scale-[1.08]"
         />
         {/* Color grade overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#020617]/40 via-[#020617]/30 to-[#020617]/90" />
@@ -81,34 +83,35 @@ const HeroSection = () => {
         }} />
       </motion.div>
 
-      {/* LAYER 1 — Far ambient orbs (slowest) */}
-      <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute inset-0 pointer-events-none">
-        <motion.div style={{ y: bgY }} className="absolute inset-0">
-          <div className="absolute top-[15%] right-[20%] w-[600px] h-[600px] rounded-full blur-[140px] animate-pulse-glow"
-            style={{ background: "radial-gradient(circle, rgba(56,189,248,0.35), transparent 70%)" }} />
-          <div className="absolute bottom-[10%] left-[15%] w-[500px] h-[500px] rounded-full blur-[120px] animate-pulse-glow"
-            style={{ background: "radial-gradient(circle, rgba(14,165,233,0.3), transparent 70%)", animationDelay: "2s" }} />
-        </motion.div>
+      {/* LAYER 1 — Far ambient orbs (static, GPU-friendly) */}
+      <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute inset-0 pointer-events-none will-change-transform">
+        <div className="absolute top-[15%] right-[20%] w-[480px] h-[480px] rounded-full blur-[90px] opacity-80"
+          style={{ background: "radial-gradient(circle, rgba(56,189,248,0.35), transparent 70%)" }} />
+        <div className="absolute bottom-[10%] left-[15%] w-[400px] h-[400px] rounded-full blur-[80px] opacity-80"
+          style={{ background: "radial-gradient(circle, rgba(14,165,233,0.3), transparent 70%)" }} />
       </motion.div>
 
       {/* LAYER 2 — Mid floating shapes */}
-      <motion.div style={{ x: layer2X, y: layer2Y }} className="absolute inset-0 pointer-events-none">
+      <motion.div style={{ x: layer2X, y: layer2Y }} className="absolute inset-0 pointer-events-none will-change-transform">
         <motion.div style={{ y: midY }} className="absolute inset-0">
           <FloatingShape variant="hexagon" className="absolute top-[18%] right-[8%] w-32 h-32 opacity-70" delay={0} />
           <FloatingShape variant="ring" className="absolute bottom-[20%] left-[6%] w-44 h-44 opacity-50" delay={1.5} />
-          <FloatingShape variant="cube" className="absolute top-[60%] right-[28%] w-20 h-20 opacity-60" delay={2.2} />
-          <FloatingShape variant="sphere" className="absolute top-[12%] left-[18%] w-24 h-24 opacity-50" delay={0.8} />
+          {!isMobile && (
+            <>
+              <FloatingShape variant="cube" className="absolute top-[60%] right-[28%] w-20 h-20 opacity-60" delay={2.2} />
+              <FloatingShape variant="sphere" className="absolute top-[12%] left-[18%] w-24 h-24 opacity-50" delay={0.8} />
+            </>
+          )}
         </motion.div>
       </motion.div>
 
-      {/* LAYER 3 — Foreground accents (closest, fastest) */}
-      <motion.div style={{ x: layer3X, y: layer3Y }} className="absolute inset-0 pointer-events-none">
-        <motion.div style={{ y: fgY }} className="absolute inset-0">
+      {/* LAYER 3 — Foreground accents */}
+      {!isMobile && (
+        <motion.div style={{ y: fgY }} className="absolute inset-0 pointer-events-none">
           <FloatingShape variant="pyramid" className="absolute bottom-[12%] right-[10%] w-28 h-28 opacity-90" delay={1} />
           <FloatingShape variant="torus" className="absolute top-[28%] left-[8%] w-20 h-20 opacity-70" delay={2.8} />
-          <FloatingShape variant="sphere" className="absolute bottom-[28%] right-[42%] w-12 h-12 opacity-80" delay={3.5} />
         </motion.div>
-      </motion.div>
+      )}
 
       {/* Subtle grid */}
       <div className="absolute inset-0 opacity-[0.08] pointer-events-none"
