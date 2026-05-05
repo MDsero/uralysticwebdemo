@@ -61,25 +61,40 @@ const ContactSection = () => {
 
         {/* Contact cards */}
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16">
-          {contactCards.map((card, index) => (
-            <motion.a
-              key={card.title}
-              href={card.href}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group"
-            >
-              <div className="glass-card-elevated rounded-3xl p-7 text-center hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 h-full">
+          {contactCards.map((card, index) => {
+            const isShowcase = card.action === "showcase";
+            const sharedProps = {
+              initial: { opacity: 0, y: 40 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.6, delay: index * 0.1 },
+              className: "group text-left w-full",
+            };
+            const Inner = (
+              <div className="glass-card-elevated rounded-3xl p-7 text-center hover:shadow-2xl transition-all duration-700 hover:-translate-y-3 h-full relative overflow-hidden cursor-pointer">
+                {isShowcase && (
+                  <span className="absolute top-3 right-3 text-[9px] tracking-[0.2em] uppercase px-2 py-1 rounded-full bg-primary/15 text-primary border border-primary/20 font-display font-semibold">
+                    New
+                  </span>
+                )}
                 <div className="w-14 h-14 mx-auto rounded-2xl sky-gradient flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-500 shadow-lg glow-subtle">
                   <card.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-base font-display font-semibold mb-1.5">{card.title}</h3>
                 <p className="text-primary font-medium font-body text-sm">{card.value}</p>
               </div>
-            </motion.a>
-          ))}
+            );
+            return isShowcase ? (
+              <motion.button key={card.title} type="button" onClick={() => setShowcaseOpen(true)} {...sharedProps}>
+                {Inner}
+              </motion.button>
+            ) : (
+              <motion.a key={card.title} href={card.href} {...sharedProps}>
+                {Inner}
+              </motion.a>
+            );
+          })}
+
         </div>
 
         {/* Inline contact form */}
