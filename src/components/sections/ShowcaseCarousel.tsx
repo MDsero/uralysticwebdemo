@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
+import s0 from "@/assets/showcase/site-00-hospital.jpg";
 import s1 from "@/assets/showcase/site-01-fashion.jpg";
 import s2 from "@/assets/showcase/site-02-saas.jpg";
 import s3 from "@/assets/showcase/site-03-portfolio.jpg";
@@ -17,6 +18,7 @@ import s9 from "@/assets/showcase/site-09-photographer.jpg";
 import s10 from "@/assets/showcase/site-10-medical.jpg";
 
 const slides = [
+  { img: s0, title: "Hospital Website", tag: "Healthcare", desc: "Modern hospital website with appointment booking, doctor profiles, and service catalog." },
   { img: s1, title: "Editorial Fashion Store", tag: "E-commerce", desc: "Minimal luxury commerce with editorial typography and product storytelling." },
   { img: s2, title: "Analytics SaaS Dashboard", tag: "SaaS · Fintech", desc: "Dark-mode glassmorphism dashboard with realtime charts and KPI cards." },
   { img: s3, title: "Creative Studio Portfolio", tag: "Agency", desc: "Bold serif headlines with asymmetric editorial case studies." },
