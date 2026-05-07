@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Smartphone, Network, Calendar } from "lucide-react";
-import FloatingShape from "@/components/3d/FloatingShape";
+
 import showcaseApp from "@/assets/showcase-app.png";
 import showcaseNetworking from "@/assets/showcase-networking.png";
 import showcaseConference from "@/assets/showcase-conference.png";
