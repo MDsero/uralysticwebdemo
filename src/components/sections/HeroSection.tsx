@@ -192,6 +192,7 @@ const HeroSection = () => {
 
       {/* Bottom fade into next section */}
       <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/80 to-transparent z-20" />
+      <ShowcaseCarousel open={showcaseOpen} onOpenChange={setShowcaseOpen} />
     </section>
   );
 };
