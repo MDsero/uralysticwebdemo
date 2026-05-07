@@ -1,14 +1,16 @@
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
-import { ArrowRight, Sparkles, Play } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FloatingShape from "@/components/3d/FloatingShape";
 import { useRef, useEffect, useState } from "react";
 import hero3DScene from "@/assets/hero-3d-scene.jpg";
+import ShowcaseCarousel from "./ShowcaseCarousel";
 
 const HeroSection = () => {
   const ref = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
   const [isMobile, setIsMobile] = useState(false);
+  const [showcaseOpen, setShowcaseOpen] = useState(false);
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 768px)");
@@ -161,19 +163,12 @@ const HeroSection = () => {
           >
             <Button
               size="lg"
+              onClick={() => setShowcaseOpen(true)}
               className="px-9 py-6 text-base rounded-full hover:scale-105 active:scale-[0.98] transition-all duration-300 font-display font-semibold tracking-wide text-[#020617] shadow-[0_0_40px_rgba(56,189,248,0.5)]"
               style={{ background: "linear-gradient(135deg, #e0f2fe, #7dd3fc)" }}
             >
               Discover Auralystic
               <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="px-9 py-6 text-base rounded-full border-2 border-white/20 bg-white/5 backdrop-blur-xl text-white hover:bg-white/10 hover:border-white/40 hover:text-white transition-all duration-300 font-display font-semibold tracking-wide"
-            >
-              <Play className="mr-2 w-4 h-4" />
-              Watch Our Story
             </Button>
           </motion.div>
 
