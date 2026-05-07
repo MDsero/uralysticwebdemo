@@ -1,5 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Smartphone, Network, Calendar } from "lucide-react";
 import FloatingShape from "@/components/3d/FloatingShape";
 import showcaseApp from "@/assets/showcase-app.png";
@@ -54,96 +53,62 @@ const items: ShowcaseItem[] = [
 ];
 
 const ShowcaseRow = ({ item, index }: { item: ShowcaseItem; index: number }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
-  const imageY = useTransform(scrollYProgress, [0, 1], [60, -60]);
-  const textY = useTransform(scrollYProgress, [0, 1], [20, -20]);
   const reversed = index % 2 === 1;
   const Icon = item.icon;
 
   return (
     <div
-      ref={ref}
       className={`grid md:grid-cols-2 gap-12 lg:gap-20 items-center ${
         reversed ? "md:[&>*:first-child]:order-2" : ""
       }`}
     >
       {/* Image frame */}
       <motion.div
-        style={{ y: imageY }}
-        initial={{ opacity: 0, scale: 0.85 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-        className="relative"
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="relative group"
       >
-        <FloatingShape
-          variant={item.shape}
-          className={`absolute -z-10 w-40 h-40 opacity-40 ${
-            reversed ? "-right-8 -top-8" : "-left-8 -top-8"
-          }`}
-          delay={index * 0.5}
-        />
-        <FloatingShape
-          variant="torus"
-          className={`absolute -z-10 w-24 h-24 opacity-30 ${
-            reversed ? "-left-6 -bottom-6" : "-right-6 -bottom-6"
-          }`}
-          delay={index * 0.5 + 1}
-        />
+        {/* Outer glow */}
+        <div className="absolute -inset-4 sky-gradient rounded-[2rem] opacity-20 blur-2xl group-hover:opacity-35 transition-opacity duration-500" />
 
-        <motion.div
-          animate={{ y: [-8, 8, -8] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          whileHover={{ scale: 1.03, rotateY: reversed ? -4 : 4, rotateX: -2 }}
-          style={{ transformStyle: "preserve-3d", perspective: 1200 }}
-          className="relative group"
+        {/* Frame */}
+        <div
+          className="relative rounded-[1.75rem] p-2 backdrop-blur-xl"
+          style={{
+            background:
+              "linear-gradient(135deg, rgba(255,255,255,0.85), rgba(186,230,253,0.4))",
+            border: "1px solid rgba(255,255,255,0.6)",
+            boxShadow:
+              "0 30px 80px -20px rgba(14,165,233,0.4), 0 8px 24px -8px rgba(14,165,233,0.2), inset 0 1px 0 rgba(255,255,255,0.8)",
+          }}
         >
-          {/* Outer glow */}
-          <div className="absolute -inset-4 sky-gradient rounded-[2rem] opacity-20 blur-2xl group-hover:opacity-40 transition-opacity duration-700" />
-
-          {/* Frame */}
-          <div
-            className="relative rounded-[1.75rem] p-2 backdrop-blur-xl"
-            style={{
-              background:
-                "linear-gradient(135deg, rgba(255,255,255,0.85), rgba(186,230,253,0.4))",
-              border: "1px solid rgba(255,255,255,0.6)",
-              boxShadow:
-                "0 30px 80px -20px rgba(14,165,233,0.4), 0 8px 24px -8px rgba(14,165,233,0.2), inset 0 1px 0 rgba(255,255,255,0.8)",
-            }}
-          >
-            <div className="relative overflow-hidden rounded-[1.4rem]">
-              <img
-                src={item.image}
-                alt={item.alt}
-                loading="lazy"
-                className="w-full h-auto block transition-transform duration-[1500ms] ease-out group-hover:scale-[1.06]"
-              />
-              {/* Gloss highlight */}
-              <div
-                className="pointer-events-none absolute inset-0"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 65%, rgba(14,165,233,0.08) 100%)",
-                }}
-              />
-              <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/30 rounded-[1.4rem]" />
-            </div>
+          <div className="relative overflow-hidden rounded-[1.4rem]">
+            <img
+              src={item.image}
+              alt={item.alt}
+              loading="lazy"
+              className="w-full h-auto block transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            />
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 35%, rgba(255,255,255,0) 65%, rgba(14,165,233,0.08) 100%)",
+              }}
+            />
+            <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/30 rounded-[1.4rem]" />
           </div>
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* Text */}
       <motion.div
-        style={{ y: textY }}
-        initial={{ opacity: 0, x: reversed ? -40 : 40 }}
+        initial={{ opacity: 0, x: reversed ? -20 : 20 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-80px" }}
-        transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
       >
         <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full glass-card mb-6">
           <Icon className="w-4 h-4 text-primary" />
