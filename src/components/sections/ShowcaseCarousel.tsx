@@ -79,23 +79,32 @@ const ShowcaseCarousel = ({ open, onOpenChange }: Props) => {
             className="mt-8"
           >
             <CarouselContent>
-              {slides.map((slide, i) => (
+              {slides.map((slide, i) => {
+                const distance = Math.min(
+                  Math.abs(i - current),
+                  slides.length - Math.abs(i - current)
+                );
+                const shouldRender = distance <= 1;
+                return (
                 <CarouselItem key={i}>
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5 }}
-                    className="relative rounded-2xl overflow-hidden border border-white/10 group"
+                  <div
+                    className="relative rounded-2xl overflow-hidden border border-white/10 group bg-[#0b1224]"
                     style={{ boxShadow: "0 30px 80px -20px rgba(14,165,233,0.35)" }}
                   >
-                    <img
-                      src={slide.img}
-                      alt={slide.title}
-                      width={1280}
-                      height={800}
-                      loading={i === 0 ? "eager" : "lazy"}
-                      className="w-full h-auto aspect-[16/10] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                    />
+                    <div className="aspect-[16/10] w-full">
+                      {shouldRender && (
+                        <img
+                          src={slide.img}
+                          alt={slide.title}
+                          width={1280}
+                          height={800}
+                          loading={i === 0 ? "eager" : "lazy"}
+                          decoding="async"
+                          fetchPriority={i === current ? "high" : "low"}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] animate-fade-in"
+                        />
+                      )}
+                    </div>
                     <div className="absolute inset-x-0 bottom-0 p-5 md:p-7 bg-gradient-to-t from-[#020617] via-[#020617]/80 to-transparent">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="text-[10px] tracking-[0.2em] uppercase px-2.5 py-1 rounded-full bg-sky-400/15 text-sky-200 border border-sky-400/30 font-display font-semibold">
@@ -108,9 +117,10 @@ const ShowcaseCarousel = ({ open, onOpenChange }: Props) => {
                       <h3 className="text-xl md:text-2xl font-display font-bold text-white">{slide.title}</h3>
                       <p className="text-sm text-sky-100/70 mt-1 font-body max-w-2xl">{slide.desc}</p>
                     </div>
-                  </motion.div>
+                  </div>
                 </CarouselItem>
-              ))}
+                );
+              })}
             </CarouselContent>
             <CarouselPrevious className="left-2 md:-left-4 bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20 hover:text-white" />
             <CarouselNext className="right-2 md:-right-4 bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20 hover:text-white" />
