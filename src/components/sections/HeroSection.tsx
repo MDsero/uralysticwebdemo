@@ -91,25 +91,11 @@ const HeroSection = () => {
           style={{ background: "radial-gradient(circle, rgba(14,165,233,0.3), transparent 70%)" }} />
       </motion.div>
 
-      {/* LAYER 2 — Mid floating shapes */}
-      <motion.div style={{ x: layer2X, y: layer2Y }} className="absolute inset-0 pointer-events-none will-change-transform">
-        <motion.div style={{ y: midY }} className="absolute inset-0">
+      {/* LAYER 2 — Mid floating shapes (desktop only for perf) */}
+      {!isMobile && (
+        <motion.div style={{ x: layer2X, y: layer2Y }} className="absolute inset-0 pointer-events-none will-change-transform">
           <FloatingShape variant="hexagon" className="absolute top-[18%] right-[8%] w-32 h-32 opacity-70" delay={0} />
           <FloatingShape variant="ring" className="absolute bottom-[20%] left-[6%] w-44 h-44 opacity-50" delay={1.5} />
-          {!isMobile && (
-            <>
-              <FloatingShape variant="cube" className="absolute top-[60%] right-[28%] w-20 h-20 opacity-60" delay={2.2} />
-              <FloatingShape variant="sphere" className="absolute top-[12%] left-[18%] w-24 h-24 opacity-50" delay={0.8} />
-            </>
-          )}
-        </motion.div>
-      </motion.div>
-
-      {/* LAYER 3 — Foreground accents */}
-      {!isMobile && (
-        <motion.div style={{ y: fgY }} className="absolute inset-0 pointer-events-none">
-          <FloatingShape variant="pyramid" className="absolute bottom-[12%] right-[10%] w-28 h-28 opacity-90" delay={1} />
-          <FloatingShape variant="torus" className="absolute top-[28%] left-[8%] w-20 h-20 opacity-70" delay={2.8} />
         </motion.div>
       )}
 
