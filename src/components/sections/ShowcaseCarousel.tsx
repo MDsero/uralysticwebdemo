@@ -113,7 +113,7 @@ const ShowcaseCarousel = ({ open, onOpenChange }: Props) => {
                           {slide.tag}
                         </span>
                         <span className="text-xs text-white/50 font-body">
-                          {String(i + 1).padStart(2, "0")} / 10
+                          {String(i + 1).padStart(2, "0")} / {String(slides.length).padStart(2, "0")}
                         </span>
                       </div>
                       <h3 className="text-xl md:text-2xl font-display font-bold text-white">{slide.title}</h3>
