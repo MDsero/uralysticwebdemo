@@ -12,13 +12,13 @@ type Member = {
 
 const members: Member[] = [
   {
-    name: "R. Rajeshkanna",
-    role: "CEO — Auralystic, Thanjavur",
-    img: rajesh,
+    name: "Ezhil",
+    role: "Founder — Auralystic",
+    img: ezhil,
     bio: (
       <>
-        Over <strong>7 years</strong> in enterprise networking and IT
-        infrastructure — driving Auralystic's vision with precision and trust.
+        <strong>M.A. Computer Science</strong>, with <strong>6 years</strong> of
+        CBSE teaching experience — the founding mind behind Auralystic.
       </>
     ),
   },
@@ -34,13 +34,13 @@ const members: Member[] = [
     ),
   },
   {
-    name: "Ezhil",
-    role: "Founder — Auralystic",
-    img: ezhil,
+    name: "R. Rajeshkanna",
+    role: "CEO — Auralystic, Thanjavur",
+    img: rajesh,
     bio: (
       <>
-        <strong>M.A. Computer Science</strong>, with <strong>6 years</strong> of
-        CBSE teaching experience — the founding mind behind Auralystic.
+        Over <strong>7 years</strong> in enterprise networking and IT
+        infrastructure — driving Auralystic's vision with precision and trust.
       </>
     ),
   },
@@ -66,18 +66,23 @@ const LeadershipSection = () => {
           {members.map((m) => (
             <div
               key={m.name}
-              className="glass-card-elevated rounded-2xl p-5 text-center transition-transform duration-300 hover:-translate-y-1"
+              className="group relative rounded-2xl p-6 text-center bg-gradient-to-b from-white to-sky-50/40 border border-white/80 shadow-[0_10px_30px_-12px_rgba(14,165,233,0.25),0_2px_6px_-2px_rgba(15,23,42,0.08)] hover:shadow-[0_24px_50px_-16px_rgba(14,165,233,0.4),0_4px_10px_-2px_rgba(15,23,42,0.1)] transition-all duration-500 hover:-translate-y-2"
             >
-              <div className="w-32 h-32 mx-auto mb-4 rounded-2xl overflow-hidden ring-1 ring-border shadow-md grayscale hover:grayscale-0 transition-all duration-500">
-                <img
-                  src={m.img}
-                  alt={m.name}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
+              <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+              <div className="relative w-36 h-36 mx-auto mb-5">
+                <div className="absolute -inset-1 rounded-2xl sky-gradient opacity-90 blur-[2px] group-hover:opacity-100 transition-opacity" />
+                <div className="absolute inset-0 rounded-2xl overflow-hidden ring-1 ring-white shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_8px_24px_-8px_rgba(14,165,233,0.5)]">
+                  <img
+                    src={m.img}
+                    alt={m.name}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/10 via-transparent to-white/10 pointer-events-none" />
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-foreground">{m.name}</h3>
-              <p className="text-sm text-primary italic mb-3">{m.role}</p>
+              <h3 className="text-lg font-bold text-foreground tracking-tight">{m.name}</h3>
+              <p className="text-sm text-primary font-medium italic mb-3">{m.role}</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {m.bio}
               </p>
