@@ -151,7 +151,7 @@ const ShowcaseRow = ({ item, index }: { item: ShowcaseItem; index: number }) => 
 
 const ShowcaseSection = () => {
   return (
-    <section className="relaxed-motion -mt-24 pt-28 pb-24 md:-mt-28 md:pt-32 md:pb-32 relative overflow-hidden section-gradient noise-overlay">
+    <section className="relaxed-motion -mt-32 pt-20 pb-24 md:-mt-36 md:pt-24 md:pb-32 relative overflow-hidden section-gradient noise-overlay">
       {/* Ambient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[10%] left-[5%] w-[420px] h-[420px] bg-primary/8 rounded-full blur-[120px] animate-pulse-glow" />
