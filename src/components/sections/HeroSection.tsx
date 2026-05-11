@@ -62,7 +62,7 @@ const HeroSection = () => {
   }, [mx, my, prefersReducedMotion, isMobile]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617]">
+    <section ref={ref} className="relative min-h-[82vh] flex items-center justify-center overflow-hidden bg-[#020617]">
       {/* LAYER 0 — Deep 3D scene background */}
       <motion.div
         style={{ y: bgY }}
@@ -177,7 +177,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
-            className="mt-20"
+            className="mt-12"
           >
             <motion.div
               animate={{ y: [0, 8, 0] }}
@@ -191,7 +191,7 @@ const HeroSection = () => {
       </motion.div>
 
       {/* Bottom fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/80 to-transparent z-20" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-20" />
       <ShowcaseCarousel open={showcaseOpen} onOpenChange={setShowcaseOpen} />
     </section>
   );
