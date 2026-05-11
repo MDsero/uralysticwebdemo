@@ -169,7 +169,7 @@ const ShowcaseSection = () => {
         }}
       />
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 -translate-y-10 md:-translate-y-12">
         <div className="max-w-3xl mx-auto text-center mb-6 md:mb-8">
           <span className="inline-block px-5 py-2 rounded-full sky-gradient text-white text-xs font-display font-semibold mb-6 tracking-[0.2em] uppercase">
             What We Build
