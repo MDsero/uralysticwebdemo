@@ -78,6 +78,14 @@
     font-weight: 700;
     letter-spacing: -0.02em;
   }
+
+  /* Global animation speed-up: cap durations & delays for snappier UX */
+  *, *::before, *::after {
+    animation-duration: 0.25s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.15s !important;
+    transition-delay: 0s !important;
+  }
 }
 
 @layer utilities {
