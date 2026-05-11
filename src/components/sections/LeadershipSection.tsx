@@ -17,8 +17,8 @@ const members: Member[] = [
     img: ezhil,
     bio: (
       <>
-        <strong>M.A. Computer Science</strong>, with <strong>6 years</strong> of
-        CBSE teaching experience — the founding mind behind Auralystic.
+        <strong>M.A. Computer Science</strong>, with <strong>6 year</strong> of
+        experience — the founding mind behind Auralystic.
       </>
     ),
   },
