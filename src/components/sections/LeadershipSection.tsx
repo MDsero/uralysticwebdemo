@@ -88,6 +88,8 @@ const LeadershipSection = () => {
               </p>
             </div>
           ))}
+
+          {placeholders.map((_, i) => (
             <div
               key={`ph-${i}`}
               className="rounded-2xl p-5 text-center border-2 border-dashed border-border bg-card/40 flex flex-col items-center justify-center min-h-[280px]"
