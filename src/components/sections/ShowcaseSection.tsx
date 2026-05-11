@@ -151,7 +151,7 @@ const ShowcaseRow = ({ item, index }: { item: ShowcaseItem; index: number }) => 
 
 const ShowcaseSection = () => {
   return (
-    <section className="relaxed-motion py-28 md:py-36 relative overflow-hidden section-gradient noise-overlay">
+    <section className="relaxed-motion -mt-24 pt-28 pb-24 md:-mt-28 md:pt-32 md:pb-32 relative overflow-hidden section-gradient noise-overlay">
       {/* Ambient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[10%] left-[5%] w-[420px] h-[420px] bg-primary/8 rounded-full blur-[120px] animate-pulse-glow" />
@@ -175,7 +175,7 @@ const ShowcaseSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.9 }}
-          className="max-w-3xl mx-auto text-center mb-24"
+          className="max-w-3xl mx-auto text-center mb-14 md:mb-20"
         >
           <span className="inline-block px-5 py-2 rounded-full sky-gradient text-white text-xs font-display font-semibold mb-6 tracking-[0.2em] uppercase">
             What We Build
@@ -189,7 +189,7 @@ const ShowcaseSection = () => {
           </p>
         </motion.div>
 
-        <div className="space-y-32 md:space-y-40 max-w-6xl mx-auto">
+        <div className="space-y-24 md:space-y-32 max-w-6xl mx-auto">
           {items.map((item, i) => (
             <ShowcaseRow key={item.title} item={item} index={i} />
           ))}
