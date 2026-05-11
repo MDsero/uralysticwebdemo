@@ -150,6 +150,8 @@ const ShowcaseRow = ({ item, index }: { item: ShowcaseItem; index: number }) => 
 };
 
 const ShowcaseSection = () => {
+  const [featuredItem, ...otherItems] = items;
+
   return (
     <section className="relaxed-motion -mt-20 pt-10 pb-24 md:-mt-24 md:pt-14 md:pb-32 relative overflow-hidden section-gradient noise-overlay">
       {/* Ambient orbs */}
@@ -170,6 +172,10 @@ const ShowcaseSection = () => {
       />
 
       <div className="container mx-auto px-6 relative z-10 -translate-y-10 md:-translate-y-12">
+        <div className="mb-16 md:mb-24">
+          <ShowcaseRow item={featuredItem} index={0} />
+        </div>
+
         <div className="max-w-3xl mx-auto text-center mb-6 md:mb-8">
           <span className="inline-block px-5 py-2 rounded-full sky-gradient text-white text-xs font-display font-semibold mb-6 tracking-[0.2em] uppercase">
             What We Build
@@ -184,7 +190,7 @@ const ShowcaseSection = () => {
         </div>
 
         <div className="space-y-20 md:space-y-28 max-w-6xl mx-auto">
-          {items.map((item, i) => (
+          {otherItems.map((item, i) => (
             <ShowcaseRow key={item.title} item={item} index={i} />
           ))}
         </div>
