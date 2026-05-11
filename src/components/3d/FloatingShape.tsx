@@ -101,8 +101,8 @@ const FloatingShape = ({
     <motion.div
       className={className}
       animate={{
-        y: [-12, 12, -12],
-        rotateZ: [0, 3, -3, 0],
+        y: [-4, 4, -4],
+        rotateZ: [0, 1, -1, 0],
       }}
       transition={{
         duration,
