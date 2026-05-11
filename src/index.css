@@ -86,6 +86,14 @@
     transition-duration: 0.15s !important;
     transition-delay: 0s !important;
   }
+
+  /* Opt-out: sections that should keep their natural, relaxed animations */
+  .relaxed-motion, .relaxed-motion *, .relaxed-motion *::before, .relaxed-motion *::after {
+    animation-duration: revert !important;
+    animation-delay: revert !important;
+    transition-duration: revert !important;
+    transition-delay: revert !important;
+  }
 }
 
 @layer utilities {
