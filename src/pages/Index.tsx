@@ -8,6 +8,7 @@ import ShowcaseSection from "@/components/sections/ShowcaseSection";
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection";
 import PricingSection from "@/components/sections/PricingSection";
 import ContactSection from "@/components/sections/ContactSection";
+import LeadershipSection from "@/components/sections/LeadershipSection";
 
 const Index = () => {
   return (
@@ -39,6 +40,10 @@ const Index = () => {
           <WhyChooseUsSection />
         </section>
         
+        <section id="leadership">
+          <LeadershipSection />
+        </section>
+
         <section id="pricing">
           <PricingSection />
         </section>
