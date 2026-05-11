@@ -170,14 +170,14 @@ const ShowcaseSection = () => {
       />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
+        <div className="max-w-3xl mx-auto text-center mb-6 md:mb-8">
           <span className="inline-block px-5 py-2 rounded-full sky-gradient text-white text-xs font-display font-semibold mb-6 tracking-[0.2em] uppercase">
             What We Build
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 tracking-tight leading-[1.05]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-3 tracking-tight leading-[1.05]">
             From mobile apps to <span className="text-gradient">enterprise platforms</span>
           </h2>
-          <p className="text-lg text-muted-foreground font-body">
+          <p className="text-base md:text-lg text-muted-foreground font-body">
             Engineered with precision, designed with intention. A glimpse into the digital
             ecosystems we craft for ambitious teams.
           </p>
