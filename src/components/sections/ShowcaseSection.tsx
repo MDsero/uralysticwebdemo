@@ -170,13 +170,7 @@ const ShowcaseSection = () => {
       />
 
       <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.9 }}
-          className="max-w-3xl mx-auto text-center mb-14 md:mb-20"
-        >
+        <div className="max-w-3xl mx-auto text-center mb-10 md:mb-14">
           <span className="inline-block px-5 py-2 rounded-full sky-gradient text-white text-xs font-display font-semibold mb-6 tracking-[0.2em] uppercase">
             What We Build
           </span>
@@ -187,9 +181,9 @@ const ShowcaseSection = () => {
             Engineered with precision, designed with intention. A glimpse into the digital
             ecosystems we craft for ambitious teams.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="space-y-24 md:space-y-32 max-w-6xl mx-auto">
+        <div className="space-y-20 md:space-y-28 max-w-6xl mx-auto">
           {items.map((item, i) => (
             <ShowcaseRow key={item.title} item={item} index={i} />
           ))}
