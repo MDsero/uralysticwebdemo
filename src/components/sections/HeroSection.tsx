@@ -62,7 +62,7 @@ const HeroSection = () => {
   }, [mx, my, prefersReducedMotion, isMobile]);
 
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020617]">
+    <section ref={ref} className="relative min-h-[68vh] flex items-center justify-center overflow-hidden bg-[#020617]">
       {/* LAYER 0 — Deep 3D scene background */}
       <motion.div
         style={{ y: bgY }}
@@ -130,7 +130,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.15 }}
-            className="text-5xl md:text-7xl lg:text-[5.75rem] font-display font-bold mb-8 leading-[1.02] tracking-tight"
+            className="text-5xl md:text-6xl lg:text-[4.9rem] font-display font-bold mb-6 leading-[1.02] tracking-tight"
             style={{ textShadow: "0 4px 40px rgba(56,189,248,0.3)" }}
           >
             <span className="text-white">The Future of</span>
@@ -149,7 +149,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.35 }}
-            className="text-lg md:text-xl text-sky-100/80 mb-14 max-w-2xl mx-auto font-body leading-relaxed"
+            className="text-lg md:text-xl text-sky-100/80 mb-10 max-w-2xl mx-auto font-body leading-relaxed"
           >
             Custom software, immersive web design, and enterprise-grade security —
             <span className="text-white font-medium"> engineered with precision.</span>
@@ -177,7 +177,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
-            className="mt-20"
+            className="mt-12"
           >
             <motion.div
               animate={{ y: [0, 8, 0] }}
@@ -191,7 +191,7 @@ const HeroSection = () => {
       </motion.div>
 
       {/* Bottom fade into next section */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-background via-background/80 to-transparent z-20" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-20" />
       <ShowcaseCarousel open={showcaseOpen} onOpenChange={setShowcaseOpen} />
     </section>
   );

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { Smartphone, Network, Calendar } from "lucide-react";
+import { Building2, Smartphone, Network, Calendar } from "lucide-react";
 
+import hospitalWebsite from "@/assets/showcase/site-00-hospital.jpg";
 import showcaseApp from "@/assets/showcase-app.png";
 import showcaseNetworking from "@/assets/showcase-networking.png";
 import showcaseConference from "@/assets/showcase-conference.png";
@@ -17,6 +18,17 @@ interface ShowcaseItem {
 }
 
 const items: ShowcaseItem[] = [
+  {
+    image: hospitalWebsite,
+    alt: "Hospital website demo with appointment booking and doctor profile sections",
+    eyebrow: "Hospital Website Demo",
+    title: "Hospital website, ready first.",
+    description:
+      "A clean healthcare website demo with appointment booking, doctor profiles, service pages, and a professional corporate feel.",
+    tags: ["Hospital Website", "Appointments", "Doctor Profiles"],
+    icon: Building2,
+    shape: "hexagon",
+  },
   {
     image: showcaseApp,
     alt: "Mobile application and web dashboard mockup",
@@ -138,8 +150,10 @@ const ShowcaseRow = ({ item, index }: { item: ShowcaseItem; index: number }) => 
 };
 
 const ShowcaseSection = () => {
+  const [featuredItem, ...otherItems] = items;
+
   return (
-    <section className="relaxed-motion py-28 md:py-36 relative overflow-hidden section-gradient noise-overlay">
+    <section className="relaxed-motion -mt-20 pt-10 pb-24 md:-mt-24 md:pt-14 md:pb-32 relative overflow-hidden section-gradient noise-overlay">
       {/* Ambient orbs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[10%] left-[5%] w-[420px] h-[420px] bg-primary/8 rounded-full blur-[120px] animate-pulse-glow" />
@@ -157,28 +171,26 @@ const ShowcaseSection = () => {
         }}
       />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.9 }}
-          className="max-w-3xl mx-auto text-center mb-24"
-        >
+      <div className="container mx-auto px-6 relative z-10 -translate-y-10 md:-translate-y-12">
+        <div className="mb-16 md:mb-24">
+          <ShowcaseRow item={featuredItem} index={0} />
+        </div>
+
+        <div className="max-w-3xl mx-auto text-center mb-6 md:mb-8">
           <span className="inline-block px-5 py-2 rounded-full sky-gradient text-white text-xs font-display font-semibold mb-6 tracking-[0.2em] uppercase">
             What We Build
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 tracking-tight leading-[1.05]">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-3 tracking-tight leading-[1.05]">
             From mobile apps to <span className="text-gradient">enterprise platforms</span>
           </h2>
-          <p className="text-lg text-muted-foreground font-body">
+          <p className="text-base md:text-lg text-muted-foreground font-body">
             Engineered with precision, designed with intention. A glimpse into the digital
             ecosystems we craft for ambitious teams.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="space-y-32 md:space-y-40 max-w-6xl mx-auto">
-          {items.map((item, i) => (
+        <div className="space-y-20 md:space-y-28 max-w-6xl mx-auto">
+          {otherItems.map((item, i) => (
             <ShowcaseRow key={item.title} item={item} index={i} />
           ))}
         </div>
