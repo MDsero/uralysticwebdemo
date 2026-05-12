@@ -2,9 +2,33 @@ import { motion } from "framer-motion";
 import { Building2, Smartphone, Network, Calendar } from "lucide-react";
 
 import hospitalWebsite from "@/assets/showcase/site-00-hospital.jpg";
+import siteFashion from "@/assets/showcase/site-01-fashion.jpg";
+import siteSaas from "@/assets/showcase/site-02-saas.jpg";
+import sitePortfolio from "@/assets/showcase/site-03-portfolio.jpg";
+import siteRealestate from "@/assets/showcase/site-04-realestate.jpg";
+import siteFintech from "@/assets/showcase/site-05-fintech.jpg";
+import siteRestaurant from "@/assets/showcase/site-06-restaurant.jpg";
+import siteAi from "@/assets/showcase/site-07-ai.jpg";
+import siteTravel from "@/assets/showcase/site-08-travel.jpg";
+import sitePhotographer from "@/assets/showcase/site-09-photographer.jpg";
+import siteMedical from "@/assets/showcase/site-10-medical.jpg";
 import showcaseApp from "@/assets/showcase-app.png";
 import showcaseNetworking from "@/assets/showcase-networking.png";
 import showcaseConference from "@/assets/showcase-conference.png";
+
+const gallerySites = [
+  { image: hospitalWebsite, title: "Hospital Website", tag: "Healthcare" },
+  { image: siteFashion, title: "Fashion Boutique", tag: "E-commerce" },
+  { image: siteSaas, title: "SaaS Platform", tag: "Software" },
+  { image: sitePortfolio, title: "Creative Portfolio", tag: "Personal Brand" },
+  { image: siteRealestate, title: "Real Estate", tag: "Property" },
+  { image: siteFintech, title: "Fintech Dashboard", tag: "Finance" },
+  { image: siteRestaurant, title: "Restaurant", tag: "Hospitality" },
+  { image: siteAi, title: "AI Product", tag: "AI / ML" },
+  { image: siteTravel, title: "Travel Agency", tag: "Tourism" },
+  { image: sitePhotographer, title: "Photographer", tag: "Studio" },
+  { image: siteMedical, title: "Medical Clinic", tag: "Healthcare" },
+];
 
 interface ShowcaseItem {
   image: string;
