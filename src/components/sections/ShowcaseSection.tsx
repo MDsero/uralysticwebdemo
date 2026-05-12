@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Building2, Smartphone, Network, Calendar } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { Building2, Smartphone, Network, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 
 import hospitalWebsite from "@/assets/showcase/site-00-hospital.jpg";
 import siteFashion from "@/assets/showcase/site-01-fashion.jpg";
