@@ -170,6 +170,17 @@ const HeroSection = () => {
               Discover Auralystic
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
+            <Button
+              size="lg"
+              onClick={() => {
+                document.getElementById("leadership")?.scrollIntoView({ behavior: "smooth" });
+              }}
+              variant="outline"
+              className="px-9 py-6 text-base rounded-full hover:scale-105 active:scale-[0.98] transition-all duration-300 font-display font-semibold tracking-wide text-white border-white/30 bg-white/5 backdrop-blur-xl hover:bg-white/15 hover:text-white"
+            >
+              Our Leadership
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
           </motion.div>
 
           {/* Scroll indicator */}
