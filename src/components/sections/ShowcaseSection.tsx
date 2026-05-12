@@ -227,54 +227,8 @@ const ShowcaseSection = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto mb-24 md:mb-32">
-          {gallerySites.map((site, i) => (
-            <motion.div
-              key={site.title}
-              initial={{ opacity: 0, y: 30, scale: 0.96 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.55, delay: (i % 3) * 0.08, ease: "easeOut" }}
-              whileHover={{ y: -6 }}
-              className="group relative"
-            >
-              <div className="absolute -inset-2 sky-gradient rounded-2xl opacity-15 blur-xl group-hover:opacity-30 transition-opacity duration-500" />
-              <div
-                className="relative rounded-2xl p-1.5 backdrop-blur-xl"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(255,255,255,0.85), rgba(186,230,253,0.4))",
-                  border: "1px solid rgba(255,255,255,0.6)",
-                  boxShadow:
-                    "0 20px 50px -16px rgba(14,165,233,0.35), inset 0 1px 0 rgba(255,255,255,0.8)",
-                }}
-              >
-                <div className="relative overflow-hidden rounded-xl aspect-[4/3]">
-                  <img
-                    src={site.image}
-                    alt={`${site.title} demo site`}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#020617]/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <motion.div
-                      initial={{ y: 10, opacity: 0.85 }}
-                      whileHover={{ y: 0, opacity: 1 }}
-                    >
-                      <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-display font-semibold text-white bg-white/15 backdrop-blur-md border border-white/30 mb-2 tracking-[0.15em] uppercase">
-                        {site.tag}
-                      </span>
-                      <h4 className="text-white font-display font-semibold text-base leading-tight drop-shadow-md">
-                        {site.title}
-                      </h4>
-                    </motion.div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <SiteSlider />
+
 
         <div className="max-w-3xl mx-auto text-center mb-6 md:mb-8">
           <span className="inline-block px-5 py-2 rounded-full sky-gradient text-white text-xs font-display font-semibold mb-6 tracking-[0.2em] uppercase">
