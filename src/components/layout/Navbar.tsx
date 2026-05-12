@@ -41,24 +41,11 @@ const Navbar = () => {
           }}
         >
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full sky-gradient opacity-40 blur-md group-hover:opacity-70 transition-opacity duration-300" />
-              <div className="relative w-12 h-12 rounded-full flex items-center justify-center p-1.5"
-                style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.95), rgba(186,230,253,0.7))",
-                  border: "1px solid rgba(255,255,255,0.9)",
-                  boxShadow: "0 6px 20px -4px rgba(14,165,233,0.45), inset 0 1px 0 rgba(255,255,255,0.9)",
-                }}
-              >
-                <img src={auraLogo} alt="Auralystic" className="h-9 w-9 object-contain drop-shadow-[0_2px_6px_rgba(14,165,233,0.5)] group-hover:scale-110 transition-transform duration-300" />
-              </div>
-            </div>
+          <a href="#" className="flex items-center gap-2.5">
+            <img src={auraLogo} alt="Auralystic" className="h-9 w-auto" />
             <div className="hidden sm:block">
-              <span className="text-lg font-display font-bold bg-clip-text text-transparent leading-none"
-                style={{ backgroundImage: "linear-gradient(135deg, #0c4a6e, #0ea5e9)" }}
-              >Auralystic</span>
-              <span className="block text-[10px] text-primary/70 tracking-[0.25em] uppercase font-display font-semibold mt-0.5">Simply Advanced</span>
+              <span className="text-lg font-display font-bold text-foreground leading-none">Auralystic</span>
+              <span className="block text-[10px] text-muted-foreground tracking-[0.2em] uppercase font-display font-medium mt-0.5">Simply Advanced</span>
             </div>
           </a>
 
