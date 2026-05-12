@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
-import { Building2, Smartphone, Network, Calendar } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { Building2, Smartphone, Network, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 
 import hospitalWebsite from "@/assets/showcase/site-00-hospital.jpg";
 import siteFashion from "@/assets/showcase/site-01-fashion.jpg";
@@ -173,6 +174,121 @@ const ShowcaseRow = ({ item, index }: { item: ShowcaseItem; index: number }) => 
   );
 };
 
+const SiteSlider = () => {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+  const [paused, setPaused] = useState(false);
+  const total = gallerySites.length;
+
+  useEffect(() => {
+    if (paused) return;
+    const id = setInterval(() => {
+      setDirection(1);
+      setIndex((i) => (i + 1) % total);
+    }, 3500);
+    return () => clearInterval(id);
+  }, [paused, total]);
+
+  const go = (dir: number) => {
+    setDirection(dir);
+    setIndex((i) => (i + dir + total) % total);
+  };
+
+  const site = gallerySites[index];
+
+  return (
+    <div
+      className="relative max-w-5xl mx-auto mb-24 md:mb-32"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div className="absolute -inset-4 sky-gradient rounded-[2rem] opacity-20 blur-2xl" />
+      <div
+        className="relative rounded-[1.75rem] p-2 backdrop-blur-xl overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(255,255,255,0.85), rgba(186,230,253,0.4))",
+          border: "1px solid rgba(255,255,255,0.6)",
+          boxShadow:
+            "0 30px 80px -20px rgba(14,165,233,0.4), inset 0 1px 0 rgba(255,255,255,0.8)",
+        }}
+      >
+        <div className="relative overflow-hidden rounded-[1.4rem] aspect-[16/9]">
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={index}
+              custom={direction}
+              initial={{ opacity: 0, x: direction * 80, scale: 0.98 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -direction * 80, scale: 0.98 }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0"
+            >
+              <img
+                src={site.image}
+                alt={`${site.title} demo site`}
+                className="w-full h-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#020617]/85 via-[#020617]/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+                <motion.span
+                  initial={{ opacity: 0, y: 14 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
+                  className="inline-block px-3 py-1 rounded-full text-[10px] md:text-xs font-display font-semibold text-white bg-white/15 backdrop-blur-md border border-white/30 mb-3 tracking-[0.2em] uppercase"
+                >
+                  {site.tag}
+                </motion.span>
+                <motion.h4
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, delay: 0.22 }}
+                  className="text-white font-display font-bold text-2xl md:text-4xl leading-tight drop-shadow-lg"
+                >
+                  {site.title}
+                </motion.h4>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Controls */}
+      <button
+        onClick={() => go(-1)}
+        aria-label="Previous"
+        className="absolute left-2 md:-left-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/80 backdrop-blur-md border border-white/60 shadow-lg flex items-center justify-center text-primary hover:bg-white hover:scale-110 transition-all"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      <button
+        onClick={() => go(1)}
+        aria-label="Next"
+        className="absolute right-2 md:-right-5 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/80 backdrop-blur-md border border-white/60 shadow-lg flex items-center justify-center text-primary hover:bg-white hover:scale-110 transition-all"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-6">
+        {gallerySites.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => {
+              setDirection(i > index ? 1 : -1);
+              setIndex(i);
+            }}
+            aria-label={`Go to slide ${i + 1}`}
+            className={`h-1.5 rounded-full transition-all duration-300 ${
+              i === index ? "w-8 bg-primary" : "w-1.5 bg-primary/30 hover:bg-primary/60"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const ShowcaseSection = () => {
   return (
     <section className="relaxed-motion -mt-20 pt-10 pb-24 md:-mt-24 md:pt-14 md:pb-32 relative overflow-hidden section-gradient noise-overlay">
@@ -226,54 +342,8 @@ const ShowcaseSection = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto mb-24 md:mb-32">
-          {gallerySites.map((site, i) => (
-            <motion.div
-              key={site.title}
-              initial={{ opacity: 0, y: 30, scale: 0.96 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.55, delay: (i % 3) * 0.08, ease: "easeOut" }}
-              whileHover={{ y: -6 }}
-              className="group relative"
-            >
-              <div className="absolute -inset-2 sky-gradient rounded-2xl opacity-15 blur-xl group-hover:opacity-30 transition-opacity duration-500" />
-              <div
-                className="relative rounded-2xl p-1.5 backdrop-blur-xl"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(255,255,255,0.85), rgba(186,230,253,0.4))",
-                  border: "1px solid rgba(255,255,255,0.6)",
-                  boxShadow:
-                    "0 20px 50px -16px rgba(14,165,233,0.35), inset 0 1px 0 rgba(255,255,255,0.8)",
-                }}
-              >
-                <div className="relative overflow-hidden rounded-xl aspect-[4/3]">
-                  <img
-                    src={site.image}
-                    alt={`${site.title} demo site`}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#020617]/70 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <motion.div
-                      initial={{ y: 10, opacity: 0.85 }}
-                      whileHover={{ y: 0, opacity: 1 }}
-                    >
-                      <span className="inline-block px-2.5 py-1 rounded-full text-[10px] font-display font-semibold text-white bg-white/15 backdrop-blur-md border border-white/30 mb-2 tracking-[0.15em] uppercase">
-                        {site.tag}
-                      </span>
-                      <h4 className="text-white font-display font-semibold text-base leading-tight drop-shadow-md">
-                        {site.title}
-                      </h4>
-                    </motion.div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        <SiteSlider />
+
 
         <div className="max-w-3xl mx-auto text-center mb-6 md:mb-8">
           <span className="inline-block px-5 py-2 rounded-full sky-gradient text-white text-xs font-display font-semibold mb-6 tracking-[0.2em] uppercase">
