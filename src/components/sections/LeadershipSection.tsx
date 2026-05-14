@@ -39,8 +39,8 @@ const members: Member[] = [
     img: rajesh,
     bio: (
       <>
-        Over <strong>7 years</strong> in enterprise networking and IT
-        infrastructure — driving Auralystic's vision with precision and trust.
+      <strong></strong> Blending technology, business vision, and 
+        decision-making to power growth with confidence and style
       </>
     ),
   },
