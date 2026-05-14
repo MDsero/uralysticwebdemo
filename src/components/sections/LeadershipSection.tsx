@@ -44,6 +44,17 @@ const members: Member[] = [
       </>
     ),
   },
+  {
+    name: "Harini",
+    role: "Business Development Lead — Auralystic, Thanjavur",
+    img: Harini,
+    bio: (
+      <>
+      <strong></strong> Cultivating client relationships and brand growth 
+        — transforming business goals into successful digital transformations.
+      </>
+    ),
+  },
 ];
 
 const placeholders = Array.from({ length: 4 });
