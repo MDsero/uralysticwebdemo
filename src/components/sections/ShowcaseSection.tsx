@@ -375,20 +375,23 @@ const ShowcaseSection = () => {
                 whileHover={{ y: -6 }}
                 className={`group relative overflow-hidden rounded-3xl border border-white/40 backdrop-blur-xl shadow-[0_20px_60px_-20px_rgba(14,165,233,0.35)] ${span} ${toneStyles}`}
               >
-                <div className="absolute inset-0">
-                  <img
+                <div className="absolute inset-0 overflow-hidden">
+                  <motion.img
                     src={item.image}
                     alt={item.alt}
                     loading="lazy"
-                    className="w-full h-full object-cover opacity-40 group-hover:opacity-55 group-hover:scale-105 transition-all duration-700"
+                    initial={{ scale: 1.05 }}
+                    animate={{ scale: [1.05, 1.18, 1.05], x: [0, -10, 0], y: [0, -6, 0] }}
+                    transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
                   />
                   <div
                     className={`absolute inset-0 ${
                       tone === "light"
-                        ? "bg-gradient-to-tr from-white/90 via-white/70 to-white/40"
+                        ? "bg-gradient-to-tr from-white/85 via-white/35 to-transparent"
                         : tone === "dark"
-                        ? "bg-gradient-to-tr from-[#0f172a]/95 via-[#0f172a]/80 to-[#0f172a]/40"
-                        : "bg-gradient-to-tr from-primary/90 via-primary/70 to-primary/30"
+                        ? "bg-gradient-to-tr from-[#0f172a]/85 via-[#0f172a]/45 to-transparent"
+                        : "bg-gradient-to-tr from-primary/80 via-primary/35 to-transparent"
                     }`}
                   />
                 </div>
