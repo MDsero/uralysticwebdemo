@@ -24,7 +24,7 @@ const members: Member[] = [
   },
   {
     name: "M. Veerakumar",
-    role: "Managing Director",
+    role: "Managing Director - Auralystic, Thanjavur",
     img: veera,
     bio: (
       <>
