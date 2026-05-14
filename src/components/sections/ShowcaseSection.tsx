@@ -44,17 +44,6 @@ interface ShowcaseItem {
 
 const items: ShowcaseItem[] = [
   {
-    image: hospitalWebsite,
-    alt: "Hospital website demo with appointment booking and doctor profile sections",
-    eyebrow: "Hospital Website Demo",
-    title: "Hospital website, ready first.",
-    description:
-      "A clean healthcare website demo with appointment booking, doctor profiles, service pages, and a professional corporate feel.",
-    tags: ["Hospital Website", "Appointments", "Doctor Profiles"],
-    icon: Building2,
-    shape: "hexagon",
-  },
-  {
     image: showcaseApp,
     alt: "Mobile application and web dashboard mockup",
     eyebrow: "Mobile & Digital Platforms",
@@ -358,10 +347,97 @@ const ShowcaseSection = () => {
           </p>
         </div>
 
-        <div className="space-y-20 md:space-y-28 max-w-6xl mx-auto">
-          {items.map((item, i) => (
-            <ShowcaseRow key={item.title} item={item} index={i} />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-5 md:gap-6 max-w-6xl mx-auto auto-rows-[minmax(220px,auto)]">
+          {items.map((item, i) => {
+            const Icon = item.icon;
+            // Modular bento layout: varied spans + alternating panel styles
+            const layouts = [
+              { span: "md:col-span-4 md:row-span-2", tone: "light" },
+              { span: "md:col-span-2 md:row-span-1", tone: "dark" },
+              { span: "md:col-span-2 md:row-span-1", tone: "accent" },
+            ];
+            const { span, tone } = layouts[i] ?? layouts[0];
+
+            const toneStyles =
+              tone === "dark"
+                ? "bg-[#0f172a] text-white"
+                : tone === "accent"
+                ? "sky-gradient text-white"
+                : "bg-white/80 text-foreground";
+
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30, scale: 0.97 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.55, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -6 }}
+                className={`group relative overflow-hidden rounded-3xl border border-white/40 backdrop-blur-xl shadow-[0_20px_60px_-20px_rgba(14,165,233,0.35)] ${span} ${toneStyles}`}
+              >
+                <div className="absolute inset-0">
+                  <img
+                    src={item.image}
+                    alt={item.alt}
+                    loading="lazy"
+                    className="w-full h-full object-cover opacity-40 group-hover:opacity-55 group-hover:scale-105 transition-all duration-700"
+                  />
+                  <div
+                    className={`absolute inset-0 ${
+                      tone === "light"
+                        ? "bg-gradient-to-tr from-white/90 via-white/70 to-white/40"
+                        : tone === "dark"
+                        ? "bg-gradient-to-tr from-[#0f172a]/95 via-[#0f172a]/80 to-[#0f172a]/40"
+                        : "bg-gradient-to-tr from-primary/90 via-primary/70 to-primary/30"
+                    }`}
+                  />
+                </div>
+
+                <div className="relative z-10 h-full flex flex-col justify-between p-6 md:p-8">
+                  <div className="inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30">
+                    <Icon className={`w-3.5 h-3.5 ${tone === "light" ? "text-primary" : "text-white"}`} />
+                    <span
+                      className={`text-[10px] font-display font-semibold tracking-[0.2em] uppercase ${
+                        tone === "light" ? "text-primary" : "text-white"
+                      }`}
+                    >
+                      {item.eyebrow}
+                    </span>
+                  </div>
+                  <div>
+                    <h3
+                      className={`text-2xl md:text-3xl font-display font-bold mb-3 leading-tight ${
+                        tone === "light" ? "text-foreground" : "text-white"
+                      }`}
+                    >
+                      {item.title}
+                    </h3>
+                    <p
+                      className={`text-sm md:text-base font-body leading-relaxed mb-4 ${
+                        tone === "light" ? "text-muted-foreground" : "text-white/85"
+                      }`}
+                    >
+                      {item.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {item.tags.slice(0, 4).map((tag) => (
+                        <span
+                          key={tag}
+                          className={`px-3 py-1 rounded-full text-[11px] font-display font-semibold border backdrop-blur-sm ${
+                            tone === "light"
+                              ? "text-primary border-primary/25 bg-white/70"
+                              : "text-white border-white/30 bg-white/10"
+                          }`}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
