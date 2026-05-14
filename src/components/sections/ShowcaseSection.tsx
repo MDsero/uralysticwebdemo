@@ -437,7 +437,68 @@ const ShowcaseSection = () => {
                       ))}
                     </div>
                   </div>
+        </div>
+
+        {/* Continuous moving marquee — keeps users engaged with imagery */}
+        <div className="mt-20 md:mt-28 relative">
+          <div className="text-center mb-8">
+            <span className="inline-block px-5 py-2 rounded-full sky-gradient text-white text-xs font-display font-semibold tracking-[0.2em] uppercase">
+              Always In Motion
+            </span>
+          </div>
+          <div className="relative overflow-hidden py-4 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+            <motion.div
+              className="flex gap-6 w-max"
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+            >
+              {[...gallerySites, ...gallerySites].map((s, i) => (
+                <div
+                  key={i}
+                  className="relative w-[300px] md:w-[380px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/40 shadow-[0_20px_50px_-20px_rgba(14,165,233,0.4)] flex-shrink-0 group"
+                >
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/80 via-transparent to-transparent" />
+                  <div className="absolute bottom-3 left-4 right-4">
+                    <span className="text-[10px] font-display font-semibold text-white/80 tracking-[0.2em] uppercase">
+                      {s.tag}
+                    </span>
+                    <h5 className="text-white font-display font-semibold text-base md:text-lg leading-tight">
+                      {s.title}
+                    </h5>
+                  </div>
                 </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Reverse direction strip */}
+          <div className="relative overflow-hidden py-4 mt-4 [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+            <motion.div
+              className="flex gap-6 w-max"
+              animate={{ x: ["-50%", "0%"] }}
+              transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+            >
+              {[...gallerySites, ...gallerySites].reverse().map((s, i) => (
+                <div
+                  key={i}
+                  className="relative w-[260px] md:w-[320px] aspect-[16/10] rounded-2xl overflow-hidden border border-white/40 shadow-[0_20px_50px_-20px_rgba(14,165,233,0.4)] flex-shrink-0 group"
+                >
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#020617]/70 via-transparent to-transparent" />
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
               </motion.div>
             );
           })}
