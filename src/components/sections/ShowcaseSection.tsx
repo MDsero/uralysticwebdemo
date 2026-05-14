@@ -44,17 +44,6 @@ interface ShowcaseItem {
 
 const items: ShowcaseItem[] = [
   {
-    image: hospitalWebsite,
-    alt: "Hospital website demo with appointment booking and doctor profile sections",
-    eyebrow: "Hospital Website Demo",
-    title: "Hospital website, ready first.",
-    description:
-      "A clean healthcare website demo with appointment booking, doctor profiles, service pages, and a professional corporate feel.",
-    tags: ["Hospital Website", "Appointments", "Doctor Profiles"],
-    icon: Building2,
-    shape: "hexagon",
-  },
-  {
     image: showcaseApp,
     alt: "Mobile application and web dashboard mockup",
     eyebrow: "Mobile & Digital Platforms",
