@@ -111,7 +111,7 @@ const HeroSection = () => {
           >
             <Sparkles className="w-4 h-4 text-sky-300" />
             <span className="text-sm font-semibold text-sky-100 tracking-widest uppercase font-display">
-              Web Designing & Digital Marketing · Salem, Tamil Nadu
+              Web Designing & Digital Marketing · Thanjavur, Tamil Nadu
             </span>
           </motion.div>
 
@@ -140,7 +140,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.35 }}
             className="text-lg md:text-xl text-sky-100/80 mb-10 max-w-2xl mx-auto font-body leading-relaxed"
           >
-            Salem's trusted partner for Web Designing, Digital Marketing, Branding & SEO —
+            Thanjavur's trusted partner for Web Designing, Digital Marketing, Branding & SEO —
             your one-stop solution to take your business
             <span className="text-white font-medium"> to the next level.</span>
           </motion.p>
