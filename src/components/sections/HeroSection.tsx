@@ -122,7 +122,7 @@ const HeroSection = () => {
           >
             <Sparkles className="w-4 h-4 text-sky-300" />
             <span className="text-sm font-semibold text-sky-100 tracking-widest uppercase font-display">
-              Simply Advanced · 2026
+              Thanjavur IT Solutions · Web Design Specialist
             </span>
           </motion.div>
 
@@ -151,7 +151,8 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.35 }}
             className="text-lg md:text-xl text-sky-100/80 mb-10 max-w-2xl mx-auto font-body leading-relaxed"
           >
-            Custom software, immersive web design, and enterprise-grade security —
+            Thanjavur's trusted IT solutions and website design specialist — custom software,
+            immersive web design and enterprise-grade security
             <span className="text-white font-medium"> engineered with precision.</span>
           </motion.p>
 
