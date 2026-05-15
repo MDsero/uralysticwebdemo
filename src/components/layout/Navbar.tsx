@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
+  { label: "Portfolio", href: "#showcase" },
   { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "#contact" },
 ];
@@ -25,10 +26,9 @@ const Navbar = () => {
       transition={{ duration: 0.7, ease: "easeOut" }}
       className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-3"
     >
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto"
         style={{
-          // @ts-ignore
           "--bg-opacity": bgOpacity,
           "--blur": blur,
         } as any}
@@ -52,7 +52,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
-              <a
+              
                 key={link.label}
                 href={link.href}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 font-display font-medium tracking-wide relative group"
@@ -65,7 +65,10 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="sky-gradient text-white rounded-full px-6 py-2.5 hover:scale-105 active:scale-[0.98] transition-all duration-300 font-display font-semibold tracking-wide text-sm shadow-md">
+            <Button
+              className="sky-gradient text-white rounded-full px-6 py-2.5 hover:scale-105 active:scale-[0.98] transition-all duration-300 font-display font-semibold tracking-wide text-sm shadow-md"
+              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+            >
               Get Started
             </Button>
           </div>
@@ -94,7 +97,7 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
-                <a
+                
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
@@ -103,7 +106,13 @@ const Navbar = () => {
                   {link.label}
                 </a>
               ))}
-              <Button className="sky-gradient text-white rounded-full mt-4 font-display font-semibold shadow-md">
+              <Button
+                className="sky-gradient text-white rounded-full mt-4 font-display font-semibold shadow-md"
+                onClick={() => {
+                  setIsOpen(false);
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 Get Started
               </Button>
             </div>
