@@ -22,14 +22,12 @@ const HeroSection = () => {
 
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
 
-  // Scroll parallax — different speeds per layer create depth
   const bgY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const midY = useTransform(scrollYProgress, [0, 1], [0, 90]);
   const fgY = useTransform(scrollYProgress, [0, 1], [0, 45]);
   const contentY = useTransform(scrollYProgress, [0, 1], [0, -30]);
   const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
 
-  // Mouse parallax (disabled on mobile / reduced motion)
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 40, damping: 20 });
@@ -63,11 +61,7 @@ const HeroSection = () => {
 
   return (
     <section ref={ref} className="relative min-h-[68vh] flex items-center justify-center overflow-hidden bg-[#020617]">
-      {/* LAYER 0 — Deep 3D scene background */}
-      <motion.div
-        style={{ y: bgY }}
-        className="absolute inset-0 -z-10"
-      >
+      <motion.div style={{ y: bgY }} className="absolute inset-0 -z-10">
         <img
           src={hero3DScene}
           alt=""
@@ -76,16 +70,13 @@ const HeroSection = () => {
           decoding="async"
           className="w-full h-full object-cover scale-[1.08]"
         />
-        {/* Color grade overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#020617]/40 via-[#020617]/30 to-[#020617]/90" />
         <div className="absolute inset-0 bg-gradient-to-r from-[#020617]/60 via-transparent to-[#020617]/60" />
-        {/* Cinematic vignette */}
         <div className="absolute inset-0" style={{
           background: "radial-gradient(ellipse 90% 70% at 50% 45%, transparent 0%, rgba(2,6,23,0.85) 100%)"
         }} />
       </motion.div>
 
-      {/* LAYER 1 — Far ambient orbs (static, GPU-friendly) */}
       <motion.div style={{ x: layer1X, y: layer1Y }} className="absolute inset-0 pointer-events-none will-change-transform">
         <div className="absolute top-[15%] right-[20%] w-[480px] h-[480px] rounded-full blur-[90px] opacity-80"
           style={{ background: "radial-gradient(circle, rgba(56,189,248,0.35), transparent 70%)" }} />
@@ -93,7 +84,6 @@ const HeroSection = () => {
           style={{ background: "radial-gradient(circle, rgba(14,165,233,0.3), transparent 70%)" }} />
       </motion.div>
 
-      {/* LAYER 2 — Mid floating shapes (desktop only for perf) */}
       {!isMobile && (
         <motion.div style={{ x: layer2X, y: layer2Y }} className="absolute inset-0 pointer-events-none will-change-transform">
           <FloatingShape variant="hexagon" className="absolute top-[18%] right-[8%] w-32 h-32 opacity-70" delay={0} />
@@ -101,7 +91,6 @@ const HeroSection = () => {
         </motion.div>
       )}
 
-      {/* Subtle grid */}
       <div className="absolute inset-0 opacity-[0.08] pointer-events-none"
         style={{
           backgroundImage: "linear-gradient(rgba(56,189,248,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(56,189,248,0.5) 1px, transparent 1px)",
@@ -110,9 +99,9 @@ const HeroSection = () => {
         }}
       />
 
-      {/* CONTENT LAYER */}
       <motion.div style={{ y: contentY, opacity }} className="container mx-auto px-6 relative z-10">
         <div className="max-w-5xl mx-auto text-center">
+
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -122,7 +111,7 @@ const HeroSection = () => {
           >
             <Sparkles className="w-4 h-4 text-sky-300" />
             <span className="text-sm font-semibold text-sky-100 tracking-widest uppercase font-display">
-              Thanjavur IT Solutions · Web Design Specialist
+              Web Designing & Digital Marketing · Salem, Tamil Nadu
             </span>
           </motion.div>
 
@@ -133,13 +122,13 @@ const HeroSection = () => {
             className="text-5xl md:text-6xl lg:text-[4.9rem] font-display font-bold mb-6 leading-[1.02] tracking-tight"
             style={{ textShadow: "0 4px 40px rgba(56,189,248,0.3)" }}
           >
-            <span className="text-white">The Future of</span>
+            <span className="text-white">Design. Develop.</span>
             <br />
             <span
               className="bg-clip-text text-transparent"
               style={{ backgroundImage: "linear-gradient(135deg, #7dd3fc 0%, #38bdf8 40%, #ffffff 100%)" }}
             >
-              Tech & Design
+              Promote. Grow.
             </span>
             <br />
             <span className="text-white">Built on Auralystic</span>
@@ -151,9 +140,9 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.35 }}
             className="text-lg md:text-xl text-sky-100/80 mb-10 max-w-2xl mx-auto font-body leading-relaxed"
           >
-            Thanjavur's trusted IT solutions and website design specialist — custom software,
-            immersive web design and enterprise-grade security
-            <span className="text-white font-medium"> engineered with precision.</span>
+            Salem's trusted partner for Web Designing, Digital Marketing, Branding & SEO —
+            your one-stop solution to take your business
+            <span className="text-white font-medium"> to the next level.</span>
           </motion.p>
 
           <motion.div
@@ -184,7 +173,6 @@ const HeroSection = () => {
             </Button>
           </motion.div>
 
-          {/* Scroll indicator */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -202,7 +190,6 @@ const HeroSection = () => {
         </div>
       </motion.div>
 
-      {/* Bottom fade into next section */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-20" />
       <ShowcaseCarousel open={showcaseOpen} onOpenChange={setShowcaseOpen} />
     </section>
