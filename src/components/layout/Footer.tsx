@@ -4,7 +4,6 @@ import auraLogo from "@/assets/auralogo.png";
 const Footer = () => {
   return (
     <footer className="relative overflow-hidden" style={{ background: "linear-gradient(180deg, hsl(220 25% 8%) 0%, hsl(220 30% 5%) 100%)" }}>
-      {/* Ambient glow */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-1/4 w-64 h-64 bg-primary/8 rounded-full blur-[100px]" />
         <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-primary/6 rounded-full blur-[80px]" />
@@ -12,6 +11,7 @@ const Footer = () => {
 
       <div className="container mx-auto px-6 relative z-10 py-16">
         <div className="grid md:grid-cols-4 gap-12 mb-12">
+
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-6">
@@ -22,11 +22,11 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-slate-400 leading-relaxed mb-6 max-w-sm font-body text-sm">
-              Your all-in-one tech partner for custom software, web design, and security solutions. Building digital excellence at scale.
+              Salem's trusted partner for Web Designing, Digital Marketing, SEO, Branding & Business Solutions. Your one-stop destination to Design, Develop & Promote your business across Tamil Nadu and India.
             </p>
             <div className="flex gap-3">
               {[Linkedin, Twitter, Instagram].map((Icon, index) => (
-                <a
+                
                   key={index}
                   href="#"
                   className="w-9 h-9 rounded-xl bg-white/5 hover:bg-primary/20 border border-white/5 hover:border-primary/30 flex items-center justify-center transition-all duration-300 text-slate-400 hover:text-primary"
@@ -41,10 +41,12 @@ const Footer = () => {
           <div>
             <h4 className="text-sm font-display font-semibold mb-5 text-white tracking-wider uppercase">Services</h4>
             <ul className="space-y-3 text-slate-400 font-body text-sm">
-              <li><a href="#" className="hover:text-primary transition-colors duration-300">Software Development</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors duration-300">Web Design & UX</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors duration-300">Network Security</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors duration-300">Graphic Design</a></li>
+              <li><a href="#services" className="hover:text-primary transition-colors duration-300">Web Designing & Development</a></li>
+              <li><a href="#services" className="hover:text-primary transition-colors duration-300">Digital Marketing Salem</a></li>
+              <li><a href="#services" className="hover:text-primary transition-colors duration-300">SEO Services</a></li>
+              <li><a href="#services" className="hover:text-primary transition-colors duration-300">Corporate Branding</a></li>
+              <li><a href="#services" className="hover:text-primary transition-colors duration-300">Social Media Marketing</a></li>
+              <li><a href="#services" className="hover:text-primary transition-colors duration-300">Web Hosting</a></li>
             </ul>
           </div>
 
@@ -71,11 +73,12 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-slate-600 text-xs font-body">
-            © 2026 Auralystic. All rights reserved.
+            © 2026 Auralystic | Web Designing & Digital Marketing | Salem, Tamil Nadu, India
           </p>
           <div className="flex gap-6 text-xs text-slate-600 font-body">
             <a href="#" className="hover:text-primary transition-colors duration-300">Privacy Policy</a>
             <a href="#" className="hover:text-primary transition-colors duration-300">Terms of Service</a>
+            <a href="#contact" className="hover:text-primary transition-colors duration-300">Contact Us</a>
           </div>
         </div>
       </div>
