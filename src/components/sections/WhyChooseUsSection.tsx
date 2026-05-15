@@ -5,24 +5,24 @@ import FloatingShape from "@/components/3d/FloatingShape";
 const advantages = [
   {
     icon: Banknote,
-    title: "Price Point",
-    description: 'High-quality output without the "Big Agency" markup.',
+    title: "Affordable Pricing",
+    description: "High-quality web design and digital marketing without the big-agency price tag. Best value in Salem.",
     stat: "60%",
     statLabel: "Cost Savings",
   },
   {
     icon: Rocket,
-    title: "Speed",
-    description: "Agile development cycles for faster go-to-market.",
+    title: "Fast Delivery",
+    description: "Agile workflows mean faster go-to-market. We launch projects on time with outstanding results.",
     stat: "2x",
     statLabel: "Faster Delivery",
   },
   {
     icon: ShieldCheck,
-    title: "Security-First Mindset",
-    description: 'Unlike other "cheap" services, we don\'t sacrifice your data safety for speed.',
+    title: "One-Stop Solution",
+    description: "Design, Develop & Promote — all under one roof. No more juggling multiple vendors or agencies.",
     stat: "100%",
-    statLabel: "Secure",
+    statLabel: "End-to-End",
   },
 ];
 
@@ -49,7 +49,7 @@ const WhyChooseUsSection = () => {
             Why <span className="text-gradient">Choose Us</span>?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-body">
-            The competitive edge that sets us apart from the rest
+            Salem's most trusted web design and digital marketing team — here's what sets Auralystic apart
           </p>
         </motion.div>
 
