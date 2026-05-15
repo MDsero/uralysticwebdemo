@@ -5,18 +5,18 @@ import FloatingShape from "@/components/3d/FloatingShape";
 const solutions = [
   {
     icon: Layers,
-    title: 'The "All-in-One" Tech Partner',
-    description: "We provide a holistic approach to digital business.",
+    title: "One-Stop Digital Partner",
+    description: "Design, Develop & Promote — everything your business needs under one roof. No more juggling multiple vendors.",
   },
   {
     icon: Target,
-    title: "Affordability",
-    description: "Optimized workflows allow us to deliver high-end results at a fraction of the market cost.",
+    title: "Affordable for Every Business",
+    description: "Optimised workflows allow us to deliver high-end web design and digital marketing results at a fraction of agency cost.",
   },
   {
     icon: Sparkles,
     title: "End-to-End Delivery",
-    description: "From the first pixel of a logo to the final line of secure code.",
+    description: "From your brand's first logo to your website going live and ranking on Google — we handle it all.",
   },
 ];
 
@@ -30,6 +30,7 @@ const SolutionSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center max-w-7xl mx-auto">
+
           {/* Left side */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -44,8 +45,8 @@ const SolutionSection = () => {
               Our <span className="text-gradient">Solution</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-12 leading-relaxed font-body">
-              We've reimagined how businesses access premium technology services. 
-              No more juggling multiple vendors or breaking the bank.
+              Auralystic is Salem's one-stop destination for Web Design, Digital Marketing, SEO, and Branding.
+              We take your business to the next level — transforming ideas into reality.
             </p>
 
             <div className="space-y-8">
@@ -79,11 +80,10 @@ const SolutionSection = () => {
             className="relative"
           >
             <div className="relative aspect-square max-w-md mx-auto">
-              {/* Main card */}
               <div className="absolute inset-0 glass-card-elevated rounded-3xl p-8 flex items-center justify-center glow-subtle">
                 <div className="text-center">
                   <div className="w-28 h-28 mx-auto mb-6 relative">
-                    <motion.div 
+                    <motion.div
                       className="absolute inset-0 rounded-full sky-gradient"
                       animate={{ scale: [1, 1.08, 1] }}
                       transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -96,8 +96,7 @@ const SolutionSection = () => {
                   <p className="text-muted-foreground font-body">Everything you need</p>
                 </div>
               </div>
-              
-              {/* Floating cards */}
+
               <motion.div
                 animate={{ y: [-8, 8, -8] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -110,7 +109,7 @@ const SolutionSection = () => {
                   <span className="font-display font-semibold text-sm">Cost Effective</span>
                 </div>
               </motion.div>
-              
+
               <motion.div
                 animate={{ y: [8, -8, 8] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
