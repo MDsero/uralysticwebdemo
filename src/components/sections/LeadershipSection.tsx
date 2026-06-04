@@ -2,6 +2,9 @@ import { UserPlus } from "lucide-react";
 import rajesh from "@/assets/team/rajeshkanna.png";
 import veera from "@/assets/team/veerakumar.png";
 import ezhil from "@/assets/team/ezhil.png";
+import harini from "@/assets/team/harini.jpeg";
+import anghuswamy from "@/assets/team/anghuswamy.jpeg";
+import dinesh from "@/assets/team/dinesh.jpeg";
 
 type Member = {
   name: string;
@@ -17,14 +20,14 @@ const members: Member[] = [
     img: ezhil,
     bio: (
       <>
-        <strong>M.A. Computer Science</strong>, with <strong>6 year</strong> of
+        <strong>M.A. Computer Science</strong>, with <strong>6 years</strong> of
         experience — the founding mind behind Auralystic.
       </>
     ),
   },
   {
     name: "M. Veerakumar",
-    role: "Managing Director - Auralystic, Thanjavur",
+    role: "Managing Director — Auralystic, Thanjavur",
     img: veera,
     bio: (
       <>
@@ -35,18 +38,51 @@ const members: Member[] = [
   },
   {
     name: "R. Rajeshkanna",
-    role: "CEO — Auralystic, Thanjavur",
+    role: "Chief Executive Officer — Auralystic, Thanjavur",
     img: rajesh,
     bio: (
       <>
-      <strong></strong> Blending technology, business vision, and 
-        decision-making to power growth with confidence and style
+        Blending <strong>technology, business vision</strong> and decision-making
+        to power growth with confidence and style.
+      </>
+    ),
+  },
+  {
+    name: "Harini Balakrishnan",
+    role: "Business Development Executive",
+    img: harini,
+    bio: (
+      <>
+        Driving <strong>client partnerships & growth strategy</strong> — bridging
+        client vision with engineering execution.
+      </>
+    ),
+  },
+  {
+    name: "Anghuswamy",
+    role: "Lead — Cloud, Azure & Network Security",
+    img: anghuswamy,
+    bio: (
+      <>
+        Architects <strong>secure cloud infrastructure</strong> on Azure with
+        enterprise-grade network security and zero-trust principles.
+      </>
+    ),
+  },
+  {
+    name: "Dinesh",
+    role: "Lead — UI / UX & Web Design",
+    img: dinesh,
+    bio: (
+      <>
+        Heads <strong>product design & user experience</strong> — crafting
+        intuitive, luxury-grade interfaces that convert.
       </>
     ),
   },
 ];
 
-const placeholders = Array.from({ length: 4 });
+const placeholders = Array.from({ length: 2 });
 
 const LeadershipSection = () => {
   return (
