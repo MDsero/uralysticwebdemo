@@ -26,7 +26,7 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               {[Linkedin, Twitter, Instagram].map((Icon, index) => (
-                
+                <a
                   key={index}
                   href="#"
                   className="w-9 h-9 rounded-xl bg-white/5 hover:bg-primary/20 border border-white/5 hover:border-primary/30 flex items-center justify-center transition-all duration-300 text-slate-400 hover:text-primary"

@@ -52,7 +52,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-7">
             {navLinks.map((link) => (
-              
+              <a
                 key={link.label}
                 href={link.href}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 font-display font-medium tracking-wide relative group"
@@ -97,7 +97,7 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
-                
+                <a
                   key={link.label}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
