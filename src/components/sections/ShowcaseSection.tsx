@@ -14,7 +14,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import hospitalWebsite from "@/assets/showcase/site-00-hospital.jpg";
+import hospitalWebsite from "@/assets/showcase/site-00-hospital.png";
 import siteFashion from "@/assets/showcase/site-01-fashion.jpg";
 import siteSaas from "@/assets/showcase/site-02-saas.jpg";
 import sitePortfolio from "@/assets/showcase/site-03-portfolio.jpg";
