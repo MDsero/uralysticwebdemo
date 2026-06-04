@@ -3,8 +3,8 @@ import rajesh from "@/assets/team/rajeshkanna.png";
 import veera from "@/assets/team/veerakumar.png";
 import ezhil from "@/assets/team/ezhil.png";
 import harini from "@/assets/team/harini.jpeg";
-import anghuswamy from "@/assets/team/anghuswamy.jpeg";
-import dinesh from "@/assets/team/dinesh.jpeg";
+import dinesh from "@/assets/team/anghuswamy.jpeg";
+import anghuswamy from "@/assets/team/dinesh.jpeg";
 
 type Member = {
   name: string;
