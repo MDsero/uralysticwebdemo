@@ -10,8 +10,8 @@ const contactCards = [
   {
     icon: Mail,
     title: "Email Us",
-    value: "auraorganising@gmail.com",
-    href: "mailto:auraorganising@gmail.com",
+    value: "info@auralystic.com.com",
+    href: "mailto:info@auralystic.com.com",
     action: "link" as const,
   },
   {
