@@ -61,7 +61,7 @@ const members: Member[] = [
   {
     name: "Anghuswamy",
     role: "Lead — Cloud, Azure & Network Security",
-    img: anghuswamy,
+    img: Dinesh,
     bio: (
       <>
         Architects <strong>secure cloud infrastructure</strong> on Azure with
